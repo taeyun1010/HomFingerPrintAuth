@@ -196,10 +196,83 @@ messaggio='Insert the number of set: each set determins a class. This set should
 
 while chos~=possibility,
     chos=menu('Fingerprint Recognition System','Select image and add to database','Select image for fingerprint recognition','Info','Delete database',...
-        'Fingerprint image: visualization','Gabor Filter: visualization','Exit');
+        'Fingerprint image: visualization','Gabor Filter: visualization','Exit', 'Add processed images to database');
     %--------------------------------------------------------------------------
     %--------------------------------------------------------------------------
     %--------------------------------------------------------------------------
+    % Add fingerprints in processed_fp folder to database
+    if chos==8
+        clc;
+        close all;
+        myFolder = 'C:\Users\User\Documents\MATLAB\homFingerPrintAuth\HomFingerPrintAuth\processed_fp';
+        % Get a list of all files in the folder with the desired file name pattern.
+        filePattern = fullfile(myFolder, 'f*.bmp'); % Change to whatever pattern you need.
+        theFiles = dir(filePattern);
+        for k = 1 : length(theFiles)
+            baseFileName = theFiles(k).name;
+            fullFileName = strcat(theFiles(k).folder, '\', baseFileName);
+            %fullFileName = fullfile(myFolder, baseFileName);
+            % Now do whatever you want with this file name,
+            % such as reading it in as an image array with imread()
+            [img,map] = imread(fullFileName);
+            immagine=double(img);
+            
+            if isa(img,'uint8')
+                graylevmax=2^8-1;
+            end
+            if isa(img,'uint16')
+                graylevmax=2^16-1;
+            end
+            if isa(img,'uint32')
+                graylevmax=2^32-1;
+            end
+            fingerprint = immagine;
+            
+            N=h_lato;
+            
+            [BinarizedPrint,XofCenter,YofCenter]=centralizing(fingerprint,0);
+            [CroppedPrint]=cropping(XofCenter,YofCenter,fingerprint);
+            [NormalizedPrint,vector]=sector_norm(CroppedPrint,0);
+            
+            for (angle=0:1:num_disk-1)
+                gabor=gabor2d_sub(angle,num_disk);
+                ComponentPrint=conv2fft(NormalizedPrint,gabor,'same');
+                [disk,vector]=sector_norm(ComponentPrint,1);
+                finger_code1{angle+1}=vector(1:n_sectors);
+            end
+            
+            
+            img=imrotate(img,180/(num_disk*2));
+            fingerprint=double(img);
+            
+            [BinarizedPrint,XofCenter,YofCenter]=centralizing(fingerprint,0);
+            [CroppedPrint]=cropping(XofCenter,YofCenter,fingerprint);
+            [NormalizedPrint,vector]=sector_norm(CroppedPrint,0);
+            
+            for (angle=0:1:num_disk-1)
+                gabor=gabor2d_sub(angle,num_disk);
+                ComponentPrint=conv2fft(NormalizedPrint,gabor,'same');
+                [disk,vector]=sector_norm(ComponentPrint,1);
+                finger_code2{angle+1}=vector(1:n_sectors);
+            end
+            % FingerCode added to database
+            if (exist('fp_database.dat')==2)
+                load('fp_database.dat','-mat');
+                fp_number=fp_number+1;
+                data{fp_number,1}=finger_code1;
+                data{fp_number,2}=finger_code2;
+                file{1,fp_number}=baseFileName;
+                save('fp_database.dat','data','fp_number','file','-append');
+            else
+                fp_number=1;
+                data{fp_number,1}=finger_code1;
+                data{fp_number,2}=finger_code2;
+                file{1,fp_number}=baseFileName;
+                save('fp_database.dat','data','fp_number','file');
+            end
+        end
+    end
+    
     % Calculate FingerCode and Add to Database
     if chos==1
         clc;

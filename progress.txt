@@ -1,0 +1,2 @@
+NIST database only has 2 instances of fingerprint for a given individual.
+Check if having more instances in databse decrease false negative rate.
