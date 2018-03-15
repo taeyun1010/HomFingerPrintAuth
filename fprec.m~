@@ -196,41 +196,11 @@ messaggio='Insert the number of set: each set determins a class. This set should
 
 while chos~=possibility,
     chos=menu('Fingerprint Recognition System','Select image and add to database','Select image for fingerprint recognition','Info','Delete database',...
-        'Fingerprint image: visualization','Gabor Filter: visualization','Exit', 'Add processed images to database', 'fp_tobeverified fp recognition', 'Fingerprint authentication', 'Homomorphic Encryption', 'Load he_database.dat into workspace', 'Clear he_database.dat');
+        'Fingerprint image: visualization','Gabor Filter: visualization','Exit', 'Add processed images to database', 'fp_tobeverified fp recognition', 'Fingerprint authentication', 'Homomorphic Encryption');
     %--------------------------------------------------------------------------
     %--------------------------------------------------------------------------
     %--------------------------------------------------------------------------
     
-    % clear he_database.dat
-    if chos==13
-        clc;
-        close all;
-        clear;
-        
-        if (exist('he_database.dat')==2)
-            save('he_database.dat');
-        end
-        
-        % to keep running GUI
-        chos=12;
-        possibility=7;
-    end
-    
-    
-    % he_database.dat loader
-    if chos==12
-        clc;
-        close all;
-        clear;
-        
-        if (exist('he_database.dat')==2)
-            load('he_database.dat','-mat');
-        end
-        
-        % to keep running GUI
-        chos=12;
-        possibility=7;
-    end
     % Homomorphic Encryption
     if chos==11
         clc;
@@ -252,26 +222,22 @@ while chos~=possibility,
 % %             file{1,fp_number}=namefile;
 %             save('he_database.dat','data','fp_number','file','-append');
         else
-             fp_number=1;
+%             fp_number=1;
 %             data{fp_number,1}=finger_code1;
 %             data{fp_number,2}=finger_code2;
 % %             file{1,fp_number}=namefile;
 %             save('he_database.dat','data','fp_number','file');
         end
         
-        bitcount = 1;
-        
         for bit = bits
             [a,b] = encMat(bit);
             
-            encryptedBits{bitcount,1}=a;
-            encryptedBits{bitcount,2}=b;
+            fp_number=fp_number+1;
+            data{fp_number,1}=finger_code1;
+            data{fp_number,2}=finger_code2;
 %             file{1,fp_number}=namefile;
-           bitcount = bitcount + 1;
+            save('he_database.dat','data','fp_number','file','-append');
         end
-        
-        save('he_database.dat','encryptedBits','fp_number','-append');
-        
         %[a,b] = encMat(1);
     end
     % run fingerprint authentication
