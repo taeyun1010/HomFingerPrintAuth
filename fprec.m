@@ -196,10 +196,98 @@ messaggio='Insert the number of set: each set determins a class. This set should
 
 while chos~=possibility,
     chos=menu('Fingerprint Recognition System','Select image and add to database','Select image for fingerprint recognition','Info','Delete database',...
-        'Fingerprint image: visualization','Gabor Filter: visualization','Exit', 'Add processed images to database', 'fp_tobeverified fp recognition', 'Fingerprint authentication', 'Homomorphic Encryption', 'Load he_database.dat into workspace', 'Clear he_database.dat');
+        'Fingerprint image: visualization','Gabor Filter: visualization','Exit', 'Add processed images to database', 'fp_tobeverified fp recognition', 'Fingerprint authentication', 'Homomorphic Encryption',... 
+        'Load he_database.dat into workspace', 'Clear he_database.dat', 'Encrypt and store fingercode');
     %--------------------------------------------------------------------------
     %--------------------------------------------------------------------------
     %--------------------------------------------------------------------------
+    
+    % homomorphically encrypts fingercode and store it into he_database.dat
+    if chos==14
+        clc;
+        close all;
+        selezionato=0;
+        while selezionato==0
+            [namefile,pathname]=uigetfile({'*.bmp;*.tif;*.tiff;*.jpg;*.jpeg;*.gif','IMAGE Files (*.bmp,*.tif,*.tiff,*.jpg,*.jpeg,*.gif)'},'Chose GrayScale Image');
+            if namefile~=0
+                [img,map]=imread(strcat(pathname,namefile));
+                selezionato=1;
+            else
+                disp('Select a grayscale image');
+            end
+            if (any(namefile~=0) && (~isgray(img)))
+                disp('Select a grayscale image');
+                selezionato=0;
+            end
+        end
+        
+        immagine=double(img);
+        
+        if isa(img,'uint8')
+            graylevmax=2^8-1;
+        end
+        if isa(img,'uint16')
+            graylevmax=2^16-1;
+        end
+        if isa(img,'uint32')
+            graylevmax=2^32-1;
+        end
+        fingerprint = immagine;
+        
+        N=h_lato;
+        
+        [BinarizedPrint,XofCenter,YofCenter]=centralizing(fingerprint,0);
+        [CroppedPrint]=cropping(XofCenter,YofCenter,fingerprint);
+        [NormalizedPrint,vector]=sector_norm(CroppedPrint,0);
+        
+        for (angle=0:1:num_disk-1)    
+            gabor=gabor2d_sub(angle,num_disk);
+            ComponentPrint=conv2fft(NormalizedPrint,gabor,'same');
+            [disk,vector]=sector_norm(ComponentPrint,1);    
+            finger_code1{angle+1}=vector(1:n_sectors);
+        end
+        
+        
+        img=imrotate(img,180/(num_disk*2));
+        fingerprint=double(img);
+        
+        [BinarizedPrint,XofCenter,YofCenter]=centralizing(fingerprint,0);
+        [CroppedPrint]=cropping(XofCenter,YofCenter,fingerprint);
+        [NormalizedPrint,vector]=sector_norm(CroppedPrint,0);
+        
+        for (angle=0:1:num_disk-1)    
+            gabor=gabor2d_sub(angle,num_disk);
+            ComponentPrint=conv2fft(NormalizedPrint,gabor,'same');
+            [disk,vector]=sector_norm(ComponentPrint,1);    
+            finger_code2{angle+1}=vector(1:n_sectors);
+        end
+        
+        % to be uncommented when there is no fingerprint data in
+        % he_database.dat
+        %fp_number = 0;
+        %
+        %
+        
+        % FingerCode added to database
+        if (exist('he_database.dat')==2)
+            load('he_database.dat','-mat');
+            fp_number=fp_number+1;
+            data{fp_number,1}=finger_code1;
+            data{fp_number,2}=finger_code2;
+            file{1,fp_number}=namefile;
+            save('he_database.dat','data','fp_number','file','-append');
+        else
+            fp_number=1;
+            data{fp_number,1}=finger_code1;
+            data{fp_number,2}=finger_code2;
+            file{1,fp_number}=namefile;
+            save('he_database.dat','data','fp_number','file');
+        end
+        
+        message=strcat('FingerCode was succesfully added to database in encrypted form. Fingerprint no. ',num2str(fp_number));
+        msgbox(message,'FingerCode DataBase','help');
+    end
+    
     
     % clear he_database.dat
     if chos==13
@@ -254,7 +342,7 @@ while chos~=possibility,
 % %             file{1,fp_number}=namefile;
 %             save('he_database.dat','data','fp_number','file','-append');
         else
-             fp_number=1;
+%              fp_number=1;
 %             data{fp_number,1}=finger_code1;
 %             data{fp_number,2}=finger_code2;
 % %             file{1,fp_number}=namefile;
