@@ -1,4 +1,4 @@
-function partialoutput = encryptFC(fingercode)
+function output = encryptFC(fingercode)
 %ENCRYPTFC Summary of this function goes here
 %   Detailed explanation goes here
 
@@ -12,9 +12,9 @@ for i = 1:n
     [s,t] = size(partialfc);
     for j = 1:s
         encryptedBits = homEncrypt(round(partialfc(j)));
-        partialoutput{1,j} = encryptedBits;
+        partialoutput{j,1} = encryptedBits;
     end
-    
+    output{1,i} = partialoutput;
 end
 
 end
