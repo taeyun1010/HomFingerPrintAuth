@@ -261,23 +261,30 @@ while chos~=possibility,
             [disk,vector]=sector_norm(ComponentPrint,1);    
             finger_code2{angle+1}=vector(1:n_sectors);
         end
+        
+        % to be uncommented when there is no fingerprint data in
+        % he_database.dat
+        fp_number = 0;
+        %
+        %
+        
         % FingerCode added to database
         if (exist('he_database.dat')==2)
             load('he_database.dat','-mat');
             fp_number=fp_number+1;
-            data{fp_number,1}=finger_code1;
-            data{fp_number,2}=finger_code2;
+            data{fp_number,1}=encryptFC(finger_code1);
+            data{fp_number,2}=encryptFC(finger_code2);
             file{1,fp_number}=namefile;
             save('he_database.dat','data','fp_number','file','-append');
         else
             fp_number=1;
-            data{fp_number,1}=finger_code1;
-            data{fp_number,2}=finger_code2;
+            data{fp_number,1}=encryptFC(finger_code1);
+            data{fp_number,2}=encryptFC(finger_code2);
             file{1,fp_number}=namefile;
-            save('fp_database.dat','data','fp_number','file');
+            save('he_database.dat','data','fp_number','file');
         end
         
-        message=strcat('FingerCode was succesfully added to database. Fingerprint no. ',num2str(fp_number));
+        message=strcat('FingerCode was succesfully added to database in encrypted form. Fingerprint no. ',num2str(fp_number));
         msgbox(message,'FingerCode DataBase','help');
     end
     
@@ -335,7 +342,7 @@ while chos~=possibility,
 % %             file{1,fp_number}=namefile;
 %             save('he_database.dat','data','fp_number','file','-append');
         else
-             fp_number=1;
+%              fp_number=1;
 %             data{fp_number,1}=finger_code1;
 %             data{fp_number,2}=finger_code2;
 % %             file{1,fp_number}=namefile;
