@@ -241,8 +241,10 @@ while chos~=possibility,
         answer = inputdlg(prompt,dlg_title,num_lines);
         
         plaintext = str2num(answer{:});
-        bits = de2bi(plaintext);
-        
+%         bits = de2bi(plaintext);
+%         
+
+        encryptedBits = homEncrypt(plaintext);
         % load database
         if (exist('he_database.dat')==2)
             load('he_database.dat','-mat');
@@ -259,18 +261,19 @@ while chos~=possibility,
 %             save('he_database.dat','data','fp_number','file');
         end
         
-        bitcount = 1;
+%         bitcount = 1;
+%         
+%         for bit = bits
+%             [a,b] = encMat(bit);
+%             
+%             encryptedBits{bitcount,1}=a;
+%             encryptedBits{bitcount,2}=b;
+%             
+% %             file{1,fp_number}=namefile;
+%            bitcount = bitcount + 1;
+%         end
         
-        for bit = bits
-            [a,b] = encMat(bit);
-            
-            encryptedBits{bitcount,1}=a;
-            encryptedBits{bitcount,2}=b;
-%             file{1,fp_number}=namefile;
-           bitcount = bitcount + 1;
-        end
-        
-        save('he_database.dat','encryptedBits','fp_number','-append');
+        %save('he_database.dat','encryptedBits','fp_number','-append');
         
         %[a,b] = encMat(1);
     end
