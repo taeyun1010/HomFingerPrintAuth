@@ -174,8 +174,67 @@ clc;
 close all;
 global immagine n_bands h_bands n_arcs h_radius h_lato n_sectors matrice num_disk
 
-%%%
-%%%original value given by the author of this code
+
+% %%
+% %% not stored yet
+% % distances40 has 2-norm distances between same person, distances41 has
+% % 2-norm distances between diff person, did not rounded double to int
+% % number of features =  10240 and EER about  when threshold = 
+% % distances42 has 2-norm distances between same person, after rounding
+% % double to int, distances43 has 2-norm distances between diff person,
+% % after rounding double to int. EER about  when threshold = 
+% n_bands=10;
+% h_bands=20;
+% n_arcs=32;
+% h_radius=12;
+% h_lato=h_radius+(n_bands*h_bands*2)+16;
+% if mod(h_lato,2)==0
+%     h_lato=h_lato-1;
+% end
+% n_sectors=n_bands*n_arcs;
+% matrice=zeros(h_lato);
+% for ii=1:(h_lato*h_lato)
+%     matrice(ii)=whichsector(ii);
+% end
+% num_disk=32;
+% %%
+% %%
+
+
+% %%
+% %% in fp_database7.dat
+% % distances26 has 2-norm distances between same person, distances27 has
+% % 2-norm distances between diff person, did not rounded double to int
+% % number of features = 1280  and EER about 0.377 when threshold = 1267
+% % distances28 has 2-norm distances between same person, after rounding
+% % double to int, distances29 has 2-norm distances between diff person,
+% % after rounding double to int. EER about 0.3765 when threshold = 1267
+% n_bands=5;
+% h_bands=20;
+% n_arcs=16;
+% h_radius=12;
+% h_lato=h_radius+(n_bands*h_bands*2)+16;
+% if mod(h_lato,2)==0
+%     h_lato=h_lato-1;
+% end
+% n_sectors=n_bands*n_arcs;
+% matrice=zeros(h_lato);
+% for ii=1:(h_lato*h_lato)
+%     matrice(ii)=whichsector(ii);
+% end
+% num_disk=16;
+% %%
+% %%
+
+
+% % %%
+% %%original value given by the author of this code, in fp_database4.dat
+% % distances10 has 2-norm distances between same person, distances11 has
+% % 2-norm distances between diff person, did not rounded double to int
+% % number of features = 640 and EER about 0.3855 when threshold = 871
+% % distances16 has 2-norm distances between same person, after rounding
+% % double to int, distances17 has 2-norm distances between diff person,
+% % after rounding double to int. EER about 0.3855 when threshold = 871
 % n_bands=5;
 % h_bands=20;
 % n_arcs=16;
@@ -190,11 +249,42 @@ global immagine n_bands h_bands n_arcs h_radius h_lato n_sectors matrice num_dis
 %     matrice(ii)=whichsector(ii);
 % end
 % num_disk=8;
-%%%
-%%%
+% %%
+% %%
 
-%%%
-%%%values tweaked
+% %values tweaked, in fp_database5.dat. distances12 has 2-nordm distances
+% %between same person, distance13 has 2-norm distances between diff person,
+% %did not round double to int, EER about 0.3835 when threshold = 638,
+% %distances14 contains 2-norm distances between same person after rounding
+% %double to int32. distances15 contains 2-norm distances between diff person
+% %after rounding double to int32. EER about 0.384 when threshold = 638
+% %numberof features = 384
+% n_bands=4;
+% h_bands=20;
+% n_arcs=12;
+% h_radius=12;
+% h_lato=h_radius+(n_bands*h_bands*2)+16;
+% if mod(h_lato,2)==0
+%     h_lato=h_lato-1;
+% end
+% n_sectors=n_bands*n_arcs;
+% matrice=zeros(h_lato);
+% for ii=1:(h_lato*h_lato)
+%     matrice(ii)=whichsector(ii);
+% end
+% num_disk=8;
+% %%
+% %%
+
+% %%%stored in fp_database8.dat , using 12 fingercodes
+% %%%values tweaked, these are values used in ASIACCS poster, using 2 fingercodes are stored in
+% fp_database3.dat, distances8 has distances between same person
+% EER about 0.4005 when threshold = 49, when rounded double to int
+% number of features = 16. distances20 has distances between same person
+% without rounding double to int. distances21 has distances between diff
+% person without rounding double to int. EER about 0.398 when threshold=48
+% distances100 contains distances between diff, random person without
+% rounding doube to int.
 n_bands=8;
 h_bands=20;
 n_arcs=1;
@@ -209,9 +299,59 @@ for ii=1:(h_lato*h_lato)
     matrice(ii)=whichsector(ii);
 end
 num_disk=2;
-%%%
-%%%
+% %%%
+% %%%
 
+% %%%
+% %%%values tweaked, these are values used in fp_database2.dat, distances6
+% %%%has 2-norm distances between same person, distances7 has 2-norm
+% %%%distances between diff person, EER about 0.41 when threshold = 35
+% % number of features (fingerprint vector length) = 8, did not rounded
+% % double to int. distances18 has 2-norm distances between same person after
+% % rounding double to int32. distances19 has 2-norm distances between diff
+% % person after rounding double to int32. EER about 0.4045 when threshold=34
+% n_bands=4;
+% h_bands=20;
+% n_arcs=1;
+% h_radius=12;
+% h_lato=h_radius+(n_bands*h_bands*2)+16;
+% if mod(h_lato,2)==0
+%     h_lato=h_lato-1;
+% end
+% n_sectors=n_bands*n_arcs;
+% matrice=zeros(h_lato);
+% for ii=1:(h_lato*h_lato)
+%     matrice(ii)=whichsector(ii);
+% end
+% num_disk=2;
+% %%%
+% %%%
+
+% %%%
+% %%%values tweaked, these are values used in fp_database6.dat, distances22
+% %%%has 2-norm distances between same person, distances23 has 2-norm
+% %%%distances between diff person, EER about 0.43 when threshold = 14
+% % number of features (fingerprint vector length) = 2, did not rounded
+% % double to int. distances24 has 2-norm distances between same person after
+% % rounding double to int32. distances25 has 2-norm distances between diff
+% % person after rounding double to int32. EER about 0.4295 when threshold=
+% % 14
+% n_bands=1;
+% h_bands=20;
+% n_arcs=1;
+% h_radius=12;
+% h_lato=h_radius+(n_bands*h_bands*2)+16;
+% if mod(h_lato,2)==0
+%     h_lato=h_lato-1;
+% end
+% n_sectors=n_bands*n_arcs;
+% matrice=zeros(h_lato);
+% for ii=1:(h_lato*h_lato)
+%     matrice(ii)=whichsector(ii);
+% end
+% num_disk=2;
+% %%%
+% %%%
 
 
 % 1--> add database
@@ -226,10 +366,1073 @@ while chos~=possibility,
     chos=menu('Fingerprint Recognition System','Select image and add to database','Select image for fingerprint recognition','Info','Delete database',...
         'Fingerprint image: visualization','Gabor Filter: visualization','Exit', 'Add processed images to database', 'fp_tobeverified fp recognition', 'Fingerprint authentication', 'Homomorphic Encryption',... 
         'Load he_database.dat into workspace', 'Clear he_database.dat', 'Encrypt and store fingercode', 'Encrypt All Fingerprints','add first 10 fingerprints to db', 'Encrypted fingerprint Auth', 'Unencrypted 1norm Fingerprint Auth',...
-        'calculate all 1 norm distances between fps of same person', 'calculate all 1 norm distances between fps of different person','calculate all 2 norm distances between fps of same person', 'calculate all 2 norm distances between fps of different person');
+        'calculate all 1 norm distances between fps of same person', 'calculate all 1 norm distances between fps of different person','calculate all 2 norm distances between fps of same person', 'calculate all 2 norm distances between fps of different person', 'add vectors to database, using new number of features', ...
+    'calculate all 2-norm distances between same person, using new number of features', 'calculate all 2-norm distances between diff person, using new number of features', 'extract fingercodes to text file from db', '2 norm distances between fps of randomly chosen different person', 'insert processed_fp to the database using new number of fingercodes', ...
+    'calculate distances using different number of bits');
     %--------------------------------------------------------------------------
     %--------------------------------------------------------------------------
     %--------------------------------------------------------------------------
+    
+    % calculate distances using different number of bits to represent fp
+    % vector
+    if chos==29
+         
+        tic
+         
+        clc;
+        close all;
+        myFolder = '/home/taeyun/Desktop/Homomorphic_Encryption/HomFingerPrintAuth/fp_tobeverified';
+        % Get a list of all files in the folder with the desired file name pattern.
+        filePattern = fullfile(myFolder, 's*.bmp'); % Change to whatever pattern you need.
+        theFiles = dir(filePattern);
+        distances50 = zeros(length(theFiles), 1);
+        
+        % number of bits to represent double
+        intbit = 32;
+        fracbit = 32;
+        intbitarray(1:num_disk*n_sectors,1:1) = intbit;
+        fracbitarray(1:num_disk*n_sectors,1:1) = fracbit;
+        %
+        
+        for k = 1 : (length(theFiles))
+            baseFileName = theFiles(k).name;
+            fullFileName = strcat(theFiles(k).folder, '/', baseFileName);
+            %fullFileName = fullfile(myFolder, baseFileName);
+            % Now do whatever you want with this file name,
+            % such as reading it in as an image array with imread()
+            [img,map] = imread(fullFileName);
+            immagine=double(img);
+            
+            if isa(img,'uint8')
+                graylevmax=2^8-1;
+            end
+            if isa(img,'uint16')
+                graylevmax=2^16-1;
+            end
+            if isa(img,'uint32')
+                graylevmax=2^32-1;
+            end
+            fingerprint = immagine;
+            
+            N=h_lato;
+            
+            [BinarizedPrint,XofCenter,YofCenter]=centralizing(fingerprint,0);
+            [CroppedPrint]=cropping(XofCenter,YofCenter,fingerprint);
+            [NormalizedPrint,vector]=sector_norm(CroppedPrint,0);
+            
+            % memoria per feature vector d'ingresso
+            vettore_in=zeros(num_disk*n_sectors,1);
+            for (angle=0:1:num_disk-1)
+                gabor=gabor2d_sub(angle,num_disk);
+                ComponentPrint=conv2fft(NormalizedPrint,gabor,'same');
+                [disk,vector]=sector_norm(ComponentPrint,1);
+                finger_code{angle+1}=vector(1:n_sectors);
+                vettore_in(angle*n_sectors+1:(angle+1)*n_sectors)=finger_code{angle+1};
+            end
+            
+            
+            
+            % FingerCode of input fingerprint has just been calculated.
+            % Checking with DataBase
+            if (exist('fp_database3.dat')==2)
+                load('fp_database3.dat','-mat');
+                %---- alloco memoria -----------------------------------
+                %...
+                vettore_a=zeros(num_disk*n_sectors,1);
+                vettore_b=zeros(num_disk*n_sectors,1);
+                %best_matching=zeros(fp_number,1);
+                best_matching=zeros(1,1);
+                valori_rotazione=zeros(n_arcs,1);
+                % start checking ---------------------------------------
+                
+                % randomly choose other fingerprint
+                a = 1;
+                b = length(theFiles);
+                
+                while true
+                    r = round((b-a).*rand(1,1) + a);
+                    if (r ~= k)
+                        break
+                    end
+                end
+                
+                fcode1=data{r,1};
+                fcode2=data{r,2};
+                for rotazione=0:(n_arcs-1)
+                    p1=fcode1;
+                    p2=fcode2;
+                    % ruoto i valori dentro disco
+                    for conta_disco=1:num_disk
+                        disco1=p1{conta_disco};
+                        disco2=p2{conta_disco};
+                        for old_pos=1:n_arcs
+                            new_pos=mod(old_pos+rotazione,n_arcs);
+                            if new_pos==0
+                                new_pos=n_arcs;
+                            end
+                            for conta_bande=0:1:(n_bands-1)
+                                disco1r(new_pos+conta_bande*n_arcs)=disco1(old_pos+conta_bande*n_arcs);
+                                disco2r(new_pos+conta_bande*n_arcs)=disco2(old_pos+conta_bande*n_arcs);
+                            end
+                        end
+                        p1{conta_disco}=disco1r;
+                        p2{conta_disco}=disco2r;
+                    end
+                    % ruoto i dischi circolarmente
+                    for old_disk=1:num_disk
+                        new_disk=mod(old_disk+rotazione,num_disk);
+                        if new_disk==0
+                            new_disk=num_disk;
+                        end
+                        pos=old_disk-1;
+                        vettore_a(pos*n_sectors+1:(pos+1)*n_sectors)=p1{new_disk};
+                        vettore_b(pos*n_sectors+1:(pos+1)*n_sectors)=p2{new_disk};
+                    end
+                    
+                    %
+%                     intva = int32(vettore_a);
+%                     intvb = int32(vettore_b);
+%                     intvi = int32(vettore_in);
+%                     
+                    %calculate 1 norm using encrypted vectors
+                    %d1 = encryptedDistance(intva, intvi);
+                    %d2 = encryptedDistance(intvb, intvi);
+                    %
+%                     
+% %                     
+                    vettore_a = arrayfun(@reducedoublebits, vettore_a, intbitarray, fracbitarray); 
+                    vettore_b = arrayfun(@reducedoublebits, vettore_b, intbitarray, fracbitarray); 
+                    vettore_in = arrayfun(@reducedoublebits, vettore_in, intbitarray, fracbitarray); 
+                    d1=norm(vettore_a-vettore_in);
+                    d2=norm(vettore_b-vettore_in);
+                    
+%                     d1=sqrt(sum((intva-intvi).^2));
+%                     d2=sqrt(sum((intvb-intvi).^2));
+                    
+%                     d1 = sum(abs(intva-intvi));
+%                     d2 = sum(abs(intvb-intvi));
+                    if d1<d2
+                        val_minimo=d1;
+                    else
+                        val_minimo=d2;
+                    end
+                    valori_rotazione(rotazione+1)=val_minimo;
+                end
+                [minimo,posizione_minimo]=min(valori_rotazione);
+                best_matching(1)=minimo;
+                
+                [distanza_minima,posizione_minimo]=min(best_matching);
+                beep;
+                %message=strcat('distance between ', num2str(k),'th fingerprints : ',num2str(distanza_minima));
+                %msgbox(message,'DataBase Info','help');
+                %disp(message);
+                distances50(k) = distanza_minima;
+            else
+                message='DataBase is empty. No check is possible.';
+                msgbox(message,'FingerCode DataBase Error','warn');
+            end
+        end
+        
+        toc
+        
+        avgdistance3 = sum(distances3) /size(distances3);
+        message2 = strcat('avgdistance2 = ', num2str(avgdistance3));
+        disp(message2);
+    end
+    
+    % Add fingerprints in processed_fp folder to database, using new number
+    % of fingercodes
+    if chos==28
+        % number of fingercodes = 12
+        clc;
+        close all;
+        myFolder = '/home/taeyun/Desktop/Homomorphic_Encryption/HomFingerPrintAuth/processed_fp';
+        % Get a list of all files in the folder with the desired file name pattern.
+        filePattern = fullfile(myFolder, 'f*.bmp'); % Change to whatever pattern you need.
+        theFiles = dir(filePattern);
+        for k = 1 : length(theFiles)
+            baseFileName = theFiles(k).name;
+            fullFileName = strcat(theFiles(k).folder, '/', baseFileName);
+            %fullFileName = fullfile(myFolder, baseFileName);
+            % Now do whatever you want with this file name,
+            % such as reading it in as an image array with imread()
+            [img,map] = imread(fullFileName);
+            immagine=double(img);
+            
+            if isa(img,'uint8')
+                graylevmax=2^8-1;
+            end
+            if isa(img,'uint16')
+                graylevmax=2^16-1;
+            end
+            if isa(img,'uint32')
+                graylevmax=2^32-1;
+            end
+            fingerprint = immagine;
+            
+            N=h_lato;
+            
+            [BinarizedPrint,XofCenter,YofCenter]=centralizing(fingerprint,0);
+            [CroppedPrint]=cropping(XofCenter,YofCenter,fingerprint);
+            [NormalizedPrint,vector]=sector_norm(CroppedPrint,0);
+            
+            for (angle=0:1:num_disk-1)
+                gabor=gabor2d_sub(angle,num_disk);
+                ComponentPrint=conv2fft(NormalizedPrint,gabor,'same');
+                [disk,vector]=sector_norm(ComponentPrint,1);
+                finger_code1{angle+1}=vector(1:n_sectors);
+            end
+            
+            
+            img=imrotate(img,30/(num_disk*2));
+            fingerprint=double(img);
+            
+            [BinarizedPrint,XofCenter,YofCenter]=centralizing(fingerprint,0);
+            [CroppedPrint]=cropping(XofCenter,YofCenter,fingerprint);
+            [NormalizedPrint,vector]=sector_norm(CroppedPrint,0);
+            
+            for (angle=0:1:num_disk-1)
+                gabor=gabor2d_sub(angle,num_disk);
+                ComponentPrint=conv2fft(NormalizedPrint,gabor,'same');
+                [disk,vector]=sector_norm(ComponentPrint,1);
+                finger_code2{angle+1}=vector(1:n_sectors);
+            end
+            img=imrotate(img,30/(num_disk*2));
+            fingerprint=double(img);
+            
+            [BinarizedPrint,XofCenter,YofCenter]=centralizing(fingerprint,0);
+            [CroppedPrint]=cropping(XofCenter,YofCenter,fingerprint);
+            [NormalizedPrint,vector]=sector_norm(CroppedPrint,0);
+            
+            for (angle=0:1:num_disk-1)
+                gabor=gabor2d_sub(angle,num_disk);
+                ComponentPrint=conv2fft(NormalizedPrint,gabor,'same');
+                [disk,vector]=sector_norm(ComponentPrint,1);
+                finger_code3{angle+1}=vector(1:n_sectors);
+            end
+            img=imrotate(img,30/(num_disk*2));
+            fingerprint=double(img);
+            
+            [BinarizedPrint,XofCenter,YofCenter]=centralizing(fingerprint,0);
+            [CroppedPrint]=cropping(XofCenter,YofCenter,fingerprint);
+            [NormalizedPrint,vector]=sector_norm(CroppedPrint,0);
+            
+            for (angle=0:1:num_disk-1)
+                gabor=gabor2d_sub(angle,num_disk);
+                ComponentPrint=conv2fft(NormalizedPrint,gabor,'same');
+                [disk,vector]=sector_norm(ComponentPrint,1);
+                finger_code4{angle+1}=vector(1:n_sectors);
+            end
+            img=imrotate(img,30/(num_disk*2));
+            fingerprint=double(img);
+            
+            [BinarizedPrint,XofCenter,YofCenter]=centralizing(fingerprint,0);
+            [CroppedPrint]=cropping(XofCenter,YofCenter,fingerprint);
+            [NormalizedPrint,vector]=sector_norm(CroppedPrint,0);
+            
+            for (angle=0:1:num_disk-1)
+                gabor=gabor2d_sub(angle,num_disk);
+                ComponentPrint=conv2fft(NormalizedPrint,gabor,'same');
+                [disk,vector]=sector_norm(ComponentPrint,1);
+                finger_code5{angle+1}=vector(1:n_sectors);
+            end
+            img=imrotate(img,30/(num_disk*2));
+            fingerprint=double(img);
+            
+            [BinarizedPrint,XofCenter,YofCenter]=centralizing(fingerprint,0);
+            [CroppedPrint]=cropping(XofCenter,YofCenter,fingerprint);
+            [NormalizedPrint,vector]=sector_norm(CroppedPrint,0);
+            
+            for (angle=0:1:num_disk-1)
+                gabor=gabor2d_sub(angle,num_disk);
+                ComponentPrint=conv2fft(NormalizedPrint,gabor,'same');
+                [disk,vector]=sector_norm(ComponentPrint,1);
+                finger_code6{angle+1}=vector(1:n_sectors);
+            end
+            img=imrotate(img,30/(num_disk*2));
+            fingerprint=double(img);
+            
+            [BinarizedPrint,XofCenter,YofCenter]=centralizing(fingerprint,0);
+            [CroppedPrint]=cropping(XofCenter,YofCenter,fingerprint);
+            [NormalizedPrint,vector]=sector_norm(CroppedPrint,0);
+            
+            for (angle=0:1:num_disk-1)
+                gabor=gabor2d_sub(angle,num_disk);
+                ComponentPrint=conv2fft(NormalizedPrint,gabor,'same');
+                [disk,vector]=sector_norm(ComponentPrint,1);
+                finger_code7{angle+1}=vector(1:n_sectors);
+            end
+            img=imrotate(img,30/(num_disk*2));
+            fingerprint=double(img);
+            
+            [BinarizedPrint,XofCenter,YofCenter]=centralizing(fingerprint,0);
+            [CroppedPrint]=cropping(XofCenter,YofCenter,fingerprint);
+            [NormalizedPrint,vector]=sector_norm(CroppedPrint,0);
+            
+            for (angle=0:1:num_disk-1)
+                gabor=gabor2d_sub(angle,num_disk);
+                ComponentPrint=conv2fft(NormalizedPrint,gabor,'same');
+                [disk,vector]=sector_norm(ComponentPrint,1);
+                finger_code8{angle+1}=vector(1:n_sectors);
+            end
+            img=imrotate(img,30/(num_disk*2));
+            fingerprint=double(img);
+            
+            [BinarizedPrint,XofCenter,YofCenter]=centralizing(fingerprint,0);
+            [CroppedPrint]=cropping(XofCenter,YofCenter,fingerprint);
+            [NormalizedPrint,vector]=sector_norm(CroppedPrint,0);
+            
+            for (angle=0:1:num_disk-1)
+                gabor=gabor2d_sub(angle,num_disk);
+                ComponentPrint=conv2fft(NormalizedPrint,gabor,'same');
+                [disk,vector]=sector_norm(ComponentPrint,1);
+                finger_code9{angle+1}=vector(1:n_sectors);
+            end
+            img=imrotate(img,30/(num_disk*2));
+            fingerprint=double(img);
+            
+            [BinarizedPrint,XofCenter,YofCenter]=centralizing(fingerprint,0);
+            [CroppedPrint]=cropping(XofCenter,YofCenter,fingerprint);
+            [NormalizedPrint,vector]=sector_norm(CroppedPrint,0);
+            
+            for (angle=0:1:num_disk-1)
+                gabor=gabor2d_sub(angle,num_disk);
+                ComponentPrint=conv2fft(NormalizedPrint,gabor,'same');
+                [disk,vector]=sector_norm(ComponentPrint,1);
+                finger_code10{angle+1}=vector(1:n_sectors);
+            end
+            img=imrotate(img,30/(num_disk*2));
+            fingerprint=double(img);
+            
+            [BinarizedPrint,XofCenter,YofCenter]=centralizing(fingerprint,0);
+            [CroppedPrint]=cropping(XofCenter,YofCenter,fingerprint);
+            [NormalizedPrint,vector]=sector_norm(CroppedPrint,0);
+            
+            for (angle=0:1:num_disk-1)
+                gabor=gabor2d_sub(angle,num_disk);
+                ComponentPrint=conv2fft(NormalizedPrint,gabor,'same');
+                [disk,vector]=sector_norm(ComponentPrint,1);
+                finger_code11{angle+1}=vector(1:n_sectors);
+            end
+            img=imrotate(img,30/(num_disk*2));
+            fingerprint=double(img);
+            
+            [BinarizedPrint,XofCenter,YofCenter]=centralizing(fingerprint,0);
+            [CroppedPrint]=cropping(XofCenter,YofCenter,fingerprint);
+            [NormalizedPrint,vector]=sector_norm(CroppedPrint,0);
+            
+            for (angle=0:1:num_disk-1)
+                gabor=gabor2d_sub(angle,num_disk);
+                ComponentPrint=conv2fft(NormalizedPrint,gabor,'same');
+                [disk,vector]=sector_norm(ComponentPrint,1);
+                finger_code12{angle+1}=vector(1:n_sectors);
+            end
+            % FingerCode added to database
+            if (exist('fp_database8.dat')==2)
+                load('fp_database8.dat','-mat');
+                fp_number=fp_number+1;
+                data{fp_number,1}=finger_code1;
+                data{fp_number,2}=finger_code2;
+                data{fp_number,3}=finger_code3;
+                data{fp_number,4}=finger_code4;
+                data{fp_number,5}=finger_code5;
+                data{fp_number,6}=finger_code6;
+                data{fp_number,7}=finger_code7;
+                data{fp_number,8}=finger_code8;
+                data{fp_number,9}=finger_code9;
+                data{fp_number,10}=finger_code10;
+                data{fp_number,11}=finger_code11;
+                data{fp_number,12}=finger_code12;
+                file{1,fp_number}=baseFileName;
+                save('fp_database8.dat','data','fp_number','file','-append');
+            else
+                fp_number=1;
+                data{fp_number,1}=finger_code1;
+                data{fp_number,2}=finger_code2;
+                data{fp_number,3}=finger_code3;
+                data{fp_number,4}=finger_code4;
+                data{fp_number,5}=finger_code5;
+                data{fp_number,6}=finger_code6;
+                data{fp_number,7}=finger_code7;
+                data{fp_number,8}=finger_code8;
+                data{fp_number,9}=finger_code9;
+                data{fp_number,10}=finger_code10;
+                data{fp_number,11}=finger_code11;
+                data{fp_number,12}=finger_code12;
+                file{1,fp_number}=baseFileName;
+                save('fp_database8.dat','data','fp_number','file');
+            end
+        end
+    end
+    
+    % 2 norm distances between fps of randomly chosen different person
+     if chos==27
+         
+        tic
+         
+        clc;
+        close all;
+        myFolder = '/home/taeyun/Desktop/Homomorphic_Encryption/HomFingerPrintAuth/fp_tobeverified';
+        % Get a list of all files in the folder with the desired file name pattern.
+        filePattern = fullfile(myFolder, 's*.bmp'); % Change to whatever pattern you need.
+        theFiles = dir(filePattern);
+        distances41 = zeros(length(theFiles), 1);
+        
+        for k = 1 : (length(theFiles))
+            baseFileName = theFiles(k).name;
+            fullFileName = strcat(theFiles(k).folder, '/', baseFileName);
+            %fullFileName = fullfile(myFolder, baseFileName);
+            % Now do whatever you want with this file name,
+            % such as reading it in as an image array with imread()
+            [img,map] = imread(fullFileName);
+            immagine=double(img);
+            
+            if isa(img,'uint8')
+                graylevmax=2^8-1;
+            end
+            if isa(img,'uint16')
+                graylevmax=2^16-1;
+            end
+            if isa(img,'uint32')
+                graylevmax=2^32-1;
+            end
+            fingerprint = immagine;
+            
+            N=h_lato;
+            
+            [BinarizedPrint,XofCenter,YofCenter]=centralizing(fingerprint,0);
+            [CroppedPrint]=cropping(XofCenter,YofCenter,fingerprint);
+            [NormalizedPrint,vector]=sector_norm(CroppedPrint,0);
+            
+            % memoria per feature vector d'ingresso
+            vettore_in=zeros(num_disk*n_sectors,1);
+            for (angle=0:1:num_disk-1)
+                gabor=gabor2d_sub(angle,num_disk);
+                ComponentPrint=conv2fft(NormalizedPrint,gabor,'same');
+                [disk,vector]=sector_norm(ComponentPrint,1);
+                finger_code{angle+1}=vector(1:n_sectors);
+                vettore_in(angle*n_sectors+1:(angle+1)*n_sectors)=finger_code{angle+1};
+            end
+            
+            
+            
+            % FingerCode of input fingerprint has just been calculated.
+            % Checking with DataBase
+            if (exist('fp_database8.dat')==2)
+                load('fp_database8.dat','-mat');
+                %---- alloco memoria -----------------------------------
+                %...
+                vettore_a=zeros(num_disk*n_sectors,1);
+                vettore_b=zeros(num_disk*n_sectors,1);
+                %best_matching=zeros(fp_number,1);
+                best_matching=zeros(1,1);
+                valori_rotazione=zeros(n_arcs,1);
+                % start checking ---------------------------------------
+                
+                % randomly choose other fingerprint
+                a = 1;
+                b = length(theFiles);
+                
+                while true
+                    r = round((b-a).*rand(1,1) + a);
+                    if (r ~= k)
+                        break
+                    end
+                end
+                
+                fcode1=data{r,1};
+                fcode2=data{r,2};
+                for rotazione=0:(n_arcs-1)
+                    p1=fcode1;
+                    p2=fcode2;
+                    % ruoto i valori dentro disco
+                    for conta_disco=1:num_disk
+                        disco1=p1{conta_disco};
+                        disco2=p2{conta_disco};
+                        for old_pos=1:n_arcs
+                            new_pos=mod(old_pos+rotazione,n_arcs);
+                            if new_pos==0
+                                new_pos=n_arcs;
+                            end
+                            for conta_bande=0:1:(n_bands-1)
+                                disco1r(new_pos+conta_bande*n_arcs)=disco1(old_pos+conta_bande*n_arcs);
+                                disco2r(new_pos+conta_bande*n_arcs)=disco2(old_pos+conta_bande*n_arcs);
+                            end
+                        end
+                        p1{conta_disco}=disco1r;
+                        p2{conta_disco}=disco2r;
+                    end
+                    % ruoto i dischi circolarmente
+                    for old_disk=1:num_disk
+                        new_disk=mod(old_disk+rotazione,num_disk);
+                        if new_disk==0
+                            new_disk=num_disk;
+                        end
+                        pos=old_disk-1;
+                        vettore_a(pos*n_sectors+1:(pos+1)*n_sectors)=p1{new_disk};
+                        vettore_b(pos*n_sectors+1:(pos+1)*n_sectors)=p2{new_disk};
+                    end
+                    
+                    %
+%                     intva = int32(vettore_a);
+%                     intvb = int32(vettore_b);
+%                     intvi = int32(vettore_in);
+%                     
+                    %calculate 1 norm using encrypted vectors
+                    %d1 = encryptedDistance(intva, intvi);
+                    %d2 = encryptedDistance(intvb, intvi);
+                    %
+%                     
+% %                     
+                    d1=norm(vettore_a-vettore_in);
+                    d2=norm(vettore_b-vettore_in);
+                    
+%                     d1=sqrt(sum((intva-intvi).^2));
+%                     d2=sqrt(sum((intvb-intvi).^2));
+                    
+%                     d1 = sum(abs(intva-intvi));
+%                     d2 = sum(abs(intvb-intvi));
+                    if d1<d2
+                        val_minimo=d1;
+                    else
+                        val_minimo=d2;
+                    end
+                    valori_rotazione(rotazione+1)=val_minimo;
+                end
+                [minimo,posizione_minimo]=min(valori_rotazione);
+                best_matching(1)=minimo;
+                
+                [distanza_minima,posizione_minimo]=min(best_matching);
+                beep;
+                %message=strcat('distance between ', num2str(k),'th fingerprints : ',num2str(distanza_minima));
+                %msgbox(message,'DataBase Info','help');
+                %disp(message);
+                distances41(k) = distanza_minima;
+            else
+                message='DataBase is empty. No check is possible.';
+                msgbox(message,'FingerCode DataBase Error','warn');
+            end
+        end
+        
+        toc
+        
+        avgdistance3 = sum(distances3) /size(distances3);
+        message2 = strcat('avgdistance2 = ', num2str(avgdistance3));
+        disp(message2);
+    end
+    
+    
+    % 'extract fingercodes to text file from db', uses ASIACCS poster's
+    % values
+    if chos==26
+        clc;
+        close all;
+        myFolder = '/home/taeyun/Desktop/Homomorphic_Encryption/HomFingerPrintAuth/fp_tobeverified';
+        filetowrite = fopen('/home/taeyun/Desktop/mysqlproxy/extractedfpvectors.txt', 'w');
+        % Get a list of all files in the folder with the desired file name pattern.
+        filePattern = fullfile(myFolder, 's*.bmp'); % Change to whatever pattern you need.
+        theFiles = dir(filePattern);
+%         distances25 = zeros(length(theFiles)-1, 1);
+        
+%         for k = 1 : (length(theFiles))
+        for k = 1 : 1
+            fprintf(filetowrite, '%d\n', k);
+%             fprintf(filetowrite, '\n');
+            baseFileName = theFiles(k).name;
+            fullFileName = strcat(theFiles(k).folder, '/', baseFileName);
+            %fullFileName = fullfile(myFolder, baseFileName);
+            % Now do whatever you want with this file name,
+            % such as reading it in as an image array with imread()
+            [img,map] = imread(fullFileName);
+            immagine=double(img);
+            
+            if isa(img,'uint8')
+                graylevmax=2^8-1;
+            end
+            if isa(img,'uint16')
+                graylevmax=2^16-1;
+            end
+            if isa(img,'uint32')
+                graylevmax=2^32-1;
+            end
+            fingerprint = immagine;
+            
+            N=h_lato;
+            
+            [BinarizedPrint,XofCenter,YofCenter]=centralizing(fingerprint,0);
+            [CroppedPrint]=cropping(XofCenter,YofCenter,fingerprint);
+            [NormalizedPrint,vector]=sector_norm(CroppedPrint,0);
+            
+            % memoria per feature vector d'ingresso
+            vettore_in=zeros(num_disk*n_sectors,1);
+            for (angle=0:1:num_disk-1)
+                gabor=gabor2d_sub(angle,num_disk);
+                ComponentPrint=conv2fft(NormalizedPrint,gabor,'same');
+                [disk,vector]=sector_norm(ComponentPrint,1);
+                finger_code{angle+1}=vector(1:n_sectors);
+                vettore_in(angle*n_sectors+1:(angle+1)*n_sectors)=finger_code{angle+1};
+            end
+            
+            
+            
+            % FingerCode of input fingerprint has just been calculated.
+            % Checking with DataBase
+            if (exist('fp_database3.dat')==2)
+                load('fp_database3.dat','-mat');
+                %---- alloco memoria -----------------------------------
+                %...
+                vettore_a=zeros(num_disk*n_sectors,1);
+                vettore_b=zeros(num_disk*n_sectors,1);
+                %best_matching=zeros(fp_number,1);
+                best_matching=zeros(1,1);
+                valori_rotazione=zeros(n_arcs,1);
+                % start checking ---------------------------------------
+                
+                fcode1=data{k,1};
+                fcode2=data{k,2};
+                for rotazione=0:(n_arcs-1)
+                    p1=fcode1;
+                    p2=fcode2;
+                    % ruoto i valori dentro disco
+                    for conta_disco=1:num_disk
+                        disco1=p1{conta_disco};
+                        disco2=p2{conta_disco};
+                        for old_pos=1:n_arcs
+                            new_pos=mod(old_pos+rotazione,n_arcs);
+                            if new_pos==0
+                                new_pos=n_arcs;
+                            end
+                            for conta_bande=0:1:(n_bands-1)
+                                disco1r(new_pos+conta_bande*n_arcs)=disco1(old_pos+conta_bande*n_arcs);
+                                disco2r(new_pos+conta_bande*n_arcs)=disco2(old_pos+conta_bande*n_arcs);
+                            end
+                        end
+                        p1{conta_disco}=disco1r;
+                        p2{conta_disco}=disco2r;
+                    end
+                    % ruoto i dischi circolarmente
+                    for old_disk=1:num_disk
+                        new_disk=mod(old_disk+rotazione,num_disk);
+                        if new_disk==0
+                            new_disk=num_disk;
+                        end
+                        pos=old_disk-1;
+                        vettore_a(pos*n_sectors+1:(pos+1)*n_sectors)=p1{new_disk};
+                        vettore_b(pos*n_sectors+1:(pos+1)*n_sectors)=p2{new_disk};
+                    end
+                    
+                    %
+                    intva = int32(vettore_a);
+                    intvb = int32(vettore_b);
+                    intvi = int32(vettore_in);
+                    
+                    fprintf(filetowrite, '%d\n', intva);
+%                     fprintf(filetowrite, '%d\n', intvb);
+%                     
+                    %calculate 1 norm using encrypted vectors
+                    %d1 = encryptedDistance(intva, intvi);
+                    %d2 = encryptedDistance(intvb, intvi);
+                    %
+%                     
+% %                     
+%                     d1=norm(vettore_a-vettore_in);
+%                     d2=norm(vettore_b-vettore_in);
+                    
+                    d1=sqrt(sum((intva-intvi).^2));
+                    d2=sqrt(sum((intvb-intvi).^2));
+                    
+%                     d1 = sum(abs(intva-intvi));
+%                     d2 = sum(abs(intvb-intvi));
+                    if d1<d2
+                        val_minimo=d1;
+                    else
+                        val_minimo=d2;
+                    end
+                    valori_rotazione(rotazione+1)=val_minimo;
+                end
+                [minimo,posizione_minimo]=min(valori_rotazione);
+                best_matching(1)=minimo;
+                
+                [distanza_minima,posizione_minimo]=min(best_matching);
+                beep;
+                %message=strcat('distance between ', num2str(k),'th fingerprints : ',num2str(distanza_minima));
+                %msgbox(message,'DataBase Info','help');
+                %disp(message);
+%                 distances25(k) = distanza_minima;
+            else
+                message='DataBase is empty. No check is possible.';
+                msgbox(message,'FingerCode DataBase Error','warn');
+            end
+        end
+        fprintf(filetowrite, 'end\n');
+        fclose(filetowrite);
+    end
+    
+    % 2 norm distances between fps of different person
+     if chos==25
+         
+        tic
+         
+        clc;
+        close all;
+        myFolder = '/home/taeyun/Desktop/Homomorphic_Encryption/HomFingerPrintAuth/fp_tobeverified';
+        % Get a list of all files in the folder with the desired file name pattern.
+        filePattern = fullfile(myFolder, 's*.bmp'); % Change to whatever pattern you need.
+        theFiles = dir(filePattern);
+        distances29 = zeros(length(theFiles)-1, 1);
+        
+        %omitting last file for simplicity
+        for k = 1 : (length(theFiles)-1)
+            baseFileName = theFiles(k).name;
+            fullFileName = strcat(theFiles(k).folder, '/', baseFileName);
+            %fullFileName = fullfile(myFolder, baseFileName);
+            % Now do whatever you want with this file name,
+            % such as reading it in as an image array with imread()
+            [img,map] = imread(fullFileName);
+            immagine=double(img);
+            
+            if isa(img,'uint8')
+                graylevmax=2^8-1;
+            end
+            if isa(img,'uint16')
+                graylevmax=2^16-1;
+            end
+            if isa(img,'uint32')
+                graylevmax=2^32-1;
+            end
+            fingerprint = immagine;
+            
+            N=h_lato;
+            
+            [BinarizedPrint,XofCenter,YofCenter]=centralizing(fingerprint,0);
+            [CroppedPrint]=cropping(XofCenter,YofCenter,fingerprint);
+            [NormalizedPrint,vector]=sector_norm(CroppedPrint,0);
+            
+            % memoria per feature vector d'ingresso
+            vettore_in=zeros(num_disk*n_sectors,1);
+            for (angle=0:1:num_disk-1)
+                gabor=gabor2d_sub(angle,num_disk);
+                ComponentPrint=conv2fft(NormalizedPrint,gabor,'same');
+                [disk,vector]=sector_norm(ComponentPrint,1);
+                finger_code{angle+1}=vector(1:n_sectors);
+                vettore_in(angle*n_sectors+1:(angle+1)*n_sectors)=finger_code{angle+1};
+            end
+            
+            
+            
+            % FingerCode of input fingerprint has just been calculated.
+            % Checking with DataBase
+            if (exist('fp_database3.dat')==2)
+                load('fp_database3.dat','-mat');
+                %---- alloco memoria -----------------------------------
+                %...
+                vettore_a=zeros(num_disk*n_sectors,1);
+                vettore_b=zeros(num_disk*n_sectors,1);
+                %best_matching=zeros(fp_number,1);
+                best_matching=zeros(1,1);
+                valori_rotazione=zeros(n_arcs,1);
+                % start checking ---------------------------------------
+                
+                fcode1=data{(k+1),1};
+                fcode2=data{(k+1),2};
+                for rotazione=0:(n_arcs-1)
+                    p1=fcode1;
+                    p2=fcode2;
+                    % ruoto i valori dentro disco
+                    for conta_disco=1:num_disk
+                        disco1=p1{conta_disco};
+                        disco2=p2{conta_disco};
+                        for old_pos=1:n_arcs
+                            new_pos=mod(old_pos+rotazione,n_arcs);
+                            if new_pos==0
+                                new_pos=n_arcs;
+                            end
+                            for conta_bande=0:1:(n_bands-1)
+                                disco1r(new_pos+conta_bande*n_arcs)=disco1(old_pos+conta_bande*n_arcs);
+                                disco2r(new_pos+conta_bande*n_arcs)=disco2(old_pos+conta_bande*n_arcs);
+                            end
+                        end
+                        p1{conta_disco}=disco1r;
+                        p2{conta_disco}=disco2r;
+                    end
+                    % ruoto i dischi circolarmente
+                    for old_disk=1:num_disk
+                        new_disk=mod(old_disk+rotazione,num_disk);
+                        if new_disk==0
+                            new_disk=num_disk;
+                        end
+                        pos=old_disk-1;
+                        vettore_a(pos*n_sectors+1:(pos+1)*n_sectors)=p1{new_disk};
+                        vettore_b(pos*n_sectors+1:(pos+1)*n_sectors)=p2{new_disk};
+                    end
+                    
+                    %
+%                     intva = int32(vettore_a);
+%                     intvb = int32(vettore_b);
+%                     intvi = int32(vettore_in);
+%                     
+                    %calculate 1 norm using encrypted vectors
+                    %d1 = encryptedDistance(intva, intvi);
+                    %d2 = encryptedDistance(intvb, intvi);
+                    %
+%                     
+% %                     
+                    d1=norm(vettore_a-vettore_in);
+                    d2=norm(vettore_b-vettore_in);
+                    
+%                     d1=sqrt(sum((intva-intvi).^2));
+%                     d2=sqrt(sum((intvb-intvi).^2));
+                    
+%                     d1 = sum(abs(intva-intvi));
+%                     d2 = sum(abs(intvb-intvi));
+                    if d1<d2
+                        val_minimo=d1;
+                    else
+                        val_minimo=d2;
+                    end
+                    valori_rotazione(rotazione+1)=val_minimo;
+                end
+                [minimo,posizione_minimo]=min(valori_rotazione);
+                best_matching(1)=minimo;
+                
+                [distanza_minima,posizione_minimo]=min(best_matching);
+                beep;
+                %message=strcat('distance between ', num2str(k),'th fingerprints : ',num2str(distanza_minima));
+                %msgbox(message,'DataBase Info','help');
+                %disp(message);
+                distances29(k) = distanza_minima;
+            else
+                message='DataBase is empty. No check is possible.';
+                msgbox(message,'FingerCode DataBase Error','warn');
+            end
+        end
+        
+        toc
+        
+        avgdistance3 = sum(distances3) /size(distances3);
+        message2 = strcat('avgdistance2 = ', num2str(avgdistance3));
+        disp(message2);
+    end
+    
+    %'calculate all 2-norm distances between same person, using new number of features'
+    % 2 norm distances between fingerprint having the same id, from
+    % database, using new number of features
+    if chos==24
+        tic
+        
+        clc;
+        close all;
+        myFolder = '/home/taeyun/Desktop/Homomorphic_Encryption/HomFingerPrintAuth/fp_tobeverified';
+        % Get a list of all files in the folder with the desired file name pattern.
+        filePattern = fullfile(myFolder, 's*.bmp'); % Change to whatever pattern you need.
+        theFiles = dir(filePattern);
+        distances40 = zeros(length(theFiles), 1);
+        for k = 1 : length(theFiles)
+            baseFileName = theFiles(k).name;
+            fullFileName = strcat(theFiles(k).folder, '/', baseFileName);
+            %fullFileName = fullfile(myFolder, baseFileName);
+            % Now do whatever you want with this file name,
+            % such as reading it in as an image array with imread()
+            [img,map] = imread(fullFileName);
+            immagine=double(img);
+            
+            if isa(img,'uint8')
+                graylevmax=2^8-1;
+            end
+            if isa(img,'uint16')
+                graylevmax=2^16-1;
+            end
+            if isa(img,'uint32')
+                graylevmax=2^32-1;
+            end
+            fingerprint = immagine;
+            
+            N=h_lato;
+            
+            [BinarizedPrint,XofCenter,YofCenter]=centralizing(fingerprint,0);
+            [CroppedPrint]=cropping(XofCenter,YofCenter,fingerprint);
+            [NormalizedPrint,vector]=sector_norm(CroppedPrint,0);
+            
+            % memoria per feature vector d'ingresso
+            vettore_in=zeros(num_disk*n_sectors,1);
+            for (angle=0:1:num_disk-1)
+                gabor=gabor2d_sub(angle,num_disk);
+                ComponentPrint=conv2fft(NormalizedPrint,gabor,'same');
+                [disk,vector]=sector_norm(ComponentPrint,1);
+                finger_code{angle+1}=vector(1:n_sectors);
+                vettore_in(angle*n_sectors+1:(angle+1)*n_sectors)=finger_code{angle+1};
+            end
+            
+            
+            
+            % FingerCode of input fingerprint has just been calculated.
+            % Checking with DataBase
+            if (exist('fp_database8.dat')==2)
+                load('fp_database8.dat','-mat');
+                %---- alloco memoria -----------------------------------
+                %...
+                vettore_a=zeros(num_disk*n_sectors,1);
+                vettore_b=zeros(num_disk*n_sectors,1);
+                %best_matching=zeros(fp_number,1);
+                best_matching=zeros(1,1);
+                valori_rotazione=zeros(n_arcs,1);
+                % start checking ---------------------------------------
+                
+                fcode1=data{k,1};
+                fcode2=data{k,2};
+                for rotazione=0:(n_arcs-1)
+                    p1=fcode1;
+                    p2=fcode2;
+                    % ruoto i valori dentro disco
+                    for conta_disco=1:num_disk
+                        disco1=p1{conta_disco};
+                        disco2=p2{conta_disco};
+                        for old_pos=1:n_arcs
+                            new_pos=mod(old_pos+rotazione,n_arcs);
+                            if new_pos==0
+                                new_pos=n_arcs;
+                            end
+                            for conta_bande=0:1:(n_bands-1)
+                                disco1r(new_pos+conta_bande*n_arcs)=disco1(old_pos+conta_bande*n_arcs);
+                                disco2r(new_pos+conta_bande*n_arcs)=disco2(old_pos+conta_bande*n_arcs);
+                            end
+                        end
+                        p1{conta_disco}=disco1r;
+                        p2{conta_disco}=disco2r;
+                    end
+                    % ruoto i dischi circolarmente
+                    for old_disk=1:num_disk
+                        new_disk=mod(old_disk+rotazione,num_disk);
+                        if new_disk==0
+                            new_disk=num_disk;
+                        end
+                        pos=old_disk-1;
+                        vettore_a(pos*n_sectors+1:(pos+1)*n_sectors)=p1{new_disk};
+                        vettore_b(pos*n_sectors+1:(pos+1)*n_sectors)=p2{new_disk};
+                    end
+                    
+% %                     %
+%                     intva = int32(vettore_a);
+%                     intvb = int32(vettore_b);
+%                     intvi = int32(vettore_in);
+                    
+                    %calculate 1 norm using encrypted vectors
+                    %d1 = encryptedDistance(intva, intvi);
+                    %d2 = encryptedDistance(intvb, intvi);
+                    %
+%                     
+%                     
+                    d1=norm(vettore_a-vettore_in);
+                    d2=norm(vettore_b-vettore_in);
+
+%                     d1=sqrt(sum((intva-intvi).^2));
+%                     d2=sqrt(sum((intvb-intvi).^2));
+                
+%                     d1 = sum(abs(intva-intvi));
+%                     d2 = sum(abs(intvb-intvi));
+                    if d1<d2
+                        val_minimo=d1;
+                    else
+                        val_minimo=d2;
+                    end
+                    valori_rotazione(rotazione+1)=val_minimo;
+                end
+                [minimo,posizione_minimo]=min(valori_rotazione);
+                best_matching(1)=minimo;
+                
+                [distanza_minima,posizione_minimo]=min(best_matching);
+                beep;
+                %message=strcat('distance between ', num2str(k),'th fingerprints : ',num2str(distanza_minima));
+                %msgbox(message,'DataBase Info','help');
+                %disp(message);
+                distances40(k) = distanza_minima;
+            else
+                message='DataBase is empty. No check is possible.';
+                msgbox(message,'FingerCode DataBase Error','warn');
+            end
+        end
+        
+        toc
+        
+        avgdistance4 = sum(distances4) /size(distances4);
+        message2 = strcat('avgdistance = ', num2str(avgdistance4));
+        disp(message2);
+    end
+    
+    
+    %'add vectors to database, using new number of features'
+    % Add fingerprints in processed_fp folder to database
+    if chos==23
+        clc;
+        close all;
+        myFolder = '/home/taeyun/Desktop/Homomorphic_Encryption/HomFingerPrintAuth/processed_fp';
+        % Get a list of all files in the folder with the desired file name pattern.
+        filePattern = fullfile(myFolder, 'f*.bmp'); % Change to whatever pattern you need.
+        theFiles = dir(filePattern);
+        for k = 1 : length(theFiles)
+            baseFileName = theFiles(k).name;
+            fullFileName = strcat(theFiles(k).folder, '/', baseFileName);
+            %fullFileName = fullfile(myFolder, baseFileName);
+            % Now do whatever you want with this file name,
+            % such as reading it in as an image array with imread()
+            [img,map] = imread(fullFileName);
+            immagine=double(img);
+            
+            if isa(img,'uint8')
+                graylevmax=2^8-1;
+            end
+            if isa(img,'uint16')
+                graylevmax=2^16-1;
+            end
+            if isa(img,'uint32')
+                graylevmax=2^32-1;
+            end
+            fingerprint = immagine;
+            
+            N=h_lato;
+            
+            [BinarizedPrint,XofCenter,YofCenter]=centralizing(fingerprint,0);
+            [CroppedPrint]=cropping(XofCenter,YofCenter,fingerprint);
+            [NormalizedPrint,vector]=sector_norm(CroppedPrint,0);
+            
+            for (angle=0:1:num_disk-1)
+                gabor=gabor2d_sub(angle,num_disk);
+                ComponentPrint=conv2fft(NormalizedPrint,gabor,'same');
+                [disk,vector]=sector_norm(ComponentPrint,1);
+                finger_code1{angle+1}=vector(1:n_sectors);
+            end
+            
+            
+            img=imrotate(img,180/(num_disk*2));
+            fingerprint=double(img);
+            
+            [BinarizedPrint,XofCenter,YofCenter]=centralizing(fingerprint,0);
+            [CroppedPrint]=cropping(XofCenter,YofCenter,fingerprint);
+            [NormalizedPrint,vector]=sector_norm(CroppedPrint,0);
+            
+            for (angle=0:1:num_disk-1)
+                gabor=gabor2d_sub(angle,num_disk);
+                ComponentPrint=conv2fft(NormalizedPrint,gabor,'same');
+                [disk,vector]=sector_norm(ComponentPrint,1);
+                finger_code2{angle+1}=vector(1:n_sectors);
+            end
+            % FingerCode added to database
+            if (exist('fp_database7.dat')==2)
+                load('fp_database7.dat','-mat');
+                fp_number=fp_number+1;
+                data{fp_number,1}=finger_code1;
+                data{fp_number,2}=finger_code2;
+                file{1,fp_number}=baseFileName;
+                save('fp_database7.dat','data','fp_number','file','-append');
+            else
+                fp_number=1;
+                data{fp_number,1}=finger_code1;
+                data{fp_number,2}=finger_code2;
+                file{1,fp_number}=baseFileName;
+                save('fp_database7.dat','data','fp_number','file');
+            end
+        end
+    end
     
     % 2 norm distances (using rounded int) between fps of different person
      if chos==22
@@ -1688,19 +2891,19 @@ while chos~=possibility,
                 finger_code2{angle+1}=vector(1:n_sectors);
             end
             % FingerCode added to database
-            if (exist('fp_database.dat')==2)
-                load('fp_database.dat','-mat');
+            if (exist('fp_database8.dat')==2)
+                load('fp_database8.dat','-mat');
                 fp_number=fp_number+1;
                 data{fp_number,1}=finger_code1;
                 data{fp_number,2}=finger_code2;
                 file{1,fp_number}=baseFileName;
-                save('fp_database.dat','data','fp_number','file','-append');
+                save('fp_database8.dat','data','fp_number','file','-append');
             else
                 fp_number=1;
                 data{fp_number,1}=finger_code1;
                 data{fp_number,2}=finger_code2;
                 file{1,fp_number}=baseFileName;
-                save('fp_database.dat','data','fp_number','file');
+                save('fp_database8.dat','data','fp_number','file');
             end
         end
     end
@@ -1850,8 +3053,8 @@ while chos~=possibility,
         
         % FingerCode of input fingerprint has just been calculated.
         % Checking with DataBase
-        if (exist('fp_database.dat')==2)
-            load('fp_database.dat','-mat');
+        if (exist('fp_database3.dat')==2)
+            load('fp_database3.dat','-mat');
             %---- alloco memoria -----------------------------------
             %...
             vettore_a=zeros(num_disk*n_sectors,1);
