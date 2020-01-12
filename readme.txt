@@ -1,3 +1,7 @@
+This repository is an extension of https://github.com/hbhdytf/FingerCode
+It extracts fingerprint vectors from fingerprint images and store them in encrypted form.
+To get started, type "fprec" using Matlab application and the window will pop up.
+
 Unzip all files into Matlab current directory and type
 "fprec" to start fingerprint image processing.
 Type "helpwin fprec" for more detailed informations.
